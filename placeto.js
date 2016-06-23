@@ -1,4 +1,105 @@
-$(function(){$("input[type=text]").each(function(a){$a=$(this).val();""==$a&&(a=$(this).attr("placeholder"),""!=a&&($colorMain=$(this).css("color"),$(this).val(a),"string"==typeof pColor?$(this).css("color",pColor):$(this).css("color","#aaa"),$(this).attr("data-placeholder","0"),$pc=$(this).attr("data-pcolor"),"string"==typeof $pc&&$(this).css("color",$pc)));$(this).focus(function(){"0"==$(this).attr("data-placeholder")&&($a=$(this).val(),$(this).val(" "),"string"==typeof vColor?$(this).css("color",
-vColor):$(this).css("color","#000"),$vc=$(this).attr("data-vcolor"),"string"==typeof $vc&&$(this).css("color",$vc))})})});
-var fout=function(a){"0"==$(a).attr("data-placeholder")?($thisValue=$(a).val().replace(/^\s*/,"").replace(/\s*$/,""),""==$thisValue?($thisTextplaceholder=$(a).attr("placeholder"),$(a).val($thisTextplaceholder),"string"==typeof pColor?$(a).css("color",pColor):$(a).css("color","#aaa"),$pc=$(a).attr("data-pcolor"),"string"==typeof $pc&&$(a).css("color",$pc)):($(a).attr("data-placeholder","1"),$thisValue=$(a).val().replace(/^\s*/,"").replace(/\s*$/,""),$(a).val($thisValue))):($thisValue=$(a).val().replace(/^\s*/,
-"").replace(/\s*$/,""),""==$thisValue&&($thisTextplaceholder=$(a).attr("placeholder"),$(a).val($thisTextplaceholder),"string"==typeof pColor?$(a).css("color",pColor):$(a).css("color","#aaa"),$(a).attr("data-placeholder","0"),$pc=$(a).attr("data-pcolor"),"string"==typeof $pc&&$(a).css("color",$pc)))};
+$(function(){
+
+	$('input[type=text]').each(function(i){
+
+		$a = $(this).val();
+
+		if ($a == '') {
+
+			var $thisTextplaceholder = $(this).attr('placeholder');
+			if ($thisTextplaceholder != '') {
+
+					$colorMain = $(this).css('color');
+
+					$(this).val($thisTextplaceholder);
+					if(typeof(pColor) == 'string')  $(this).css('color', pColor); else $(this).css('color', '#aaa');
+
+					$(this).attr('data-placeholder', '0');
+					
+					$pc = $(this).attr('data-pcolor');
+					if(typeof($pc) == 'string') $(this).css('color', $pc); 
+					
+
+			}
+		}
+
+
+
+		$(this).focus(function(){
+
+			if($(this).attr('data-placeholder') == "0") {
+				
+				$a = $(this).val();
+				
+				 $(this).val(" "); 
+
+				 if(typeof(vColor) == 'string')  $(this).css('color', vColor); else $(this).css('color', '#000');
+				 
+				 $vc = $(this).attr('data-vcolor');
+				 if(typeof($vc) == 'string') $(this).css('color', $vc); 
+
+				 //$(this).removeAttr('placeholder'); 
+				// $(this).attr('data-placeholdertext', $a+' ');
+
+				
+			} else {
+				
+
+
+			}
+
+		})
+
+
+
+
+
+
+
+	})
+
+	
+})
+
+var fout = function(th){
+
+	//alert($(th).attr('data-placeholder'))
+
+	if($(th).attr('data-placeholder') == "0") {
+		$thisValue = $(th).val().replace(/^\s*/, "").replace(/\s*$/, "");
+		if ($thisValue == ''){
+				
+			$thisTextplaceholder = $(th).attr('placeholder');
+			$(th).val($thisTextplaceholder)
+			if(typeof(pColor) == 'string')  $(th).css('color', pColor); else $(th).css('color', '#aaa');
+			$pc = $(th).attr('data-pcolor');
+			if(typeof($pc) == 'string') $(th).css('color', $pc); 
+
+		} else {
+			$(th).attr('data-placeholder', '1');
+			$thisValue = $(th).val().replace(/^\s*/, "").replace(/\s*$/, "");
+			$(th).val($thisValue)
+		}
+	} else {
+
+		$thisValue = $(th).val().replace(/^\s*/, "").replace(/\s*$/, "");
+		if ($thisValue == ''){
+
+			$thisTextplaceholder = $(th).attr('placeholder');
+			$(th).val($thisTextplaceholder)
+			if(typeof(pColor) == 'string')  $(th).css('color', pColor); else $(th).css('color', '#aaa');
+			$(th).attr('data-placeholder', '0');
+
+			$pc = $(th).attr('data-pcolor');
+			if(typeof($pc) == 'string') $(th).css('color', $pc); 
+
+
+		}
+
+
+
+	}
+
+
+
+};
